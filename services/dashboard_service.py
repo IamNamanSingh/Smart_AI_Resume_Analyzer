@@ -172,26 +172,26 @@ class DashboardService:
         # 1. Skill penetration insight
         if skills:
             insights.append({
-                "icon": "🚀",
+                "icon": "fas fa-rocket",
                 "text": f"**{skills[0]}** appears in approximately 68% of uploaded resumes, making it the most dominant skill on the platform."
             })
             
         # 2. Highest performing role insight
         insights.append({
-            "icon": "📈",
+            "icon": "fas fa-chart-line",
             "text": "Software Engineering and DevOps roles show the highest average ATS scores (79/100) this month."
         })
         
         # 3. Monthly improvement trend
         insights.append({
-            "icon": "💡",
+            "icon": "fas fa-lightbulb",
             "text": "Average resume optimization match scores have increased by **14%** following user updates."
         })
         
         # 4. Category breakdown
         if roles:
             insights.append({
-                "icon": "🎯",
+                "icon": "fas fa-bullseye",
                 "text": f"The most sought-after target position on the platform is currently **{roles[0]}**."
             })
             

@@ -1,4 +1,4 @@
-# SQLite Database Schemas for Smart Resume AI
+# SQLite Database Schemas for Smart Resume
 
 CREATE_RESUME_DATA_TABLE = '''
 CREATE TABLE IF NOT EXISTS resume_data (

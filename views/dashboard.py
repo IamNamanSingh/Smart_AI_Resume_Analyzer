@@ -19,7 +19,7 @@ def render_dashboard_page():
 
     # Guard: Require Administrator Authentication
     if not st.session_state.get('is_admin', False):
-        st.warning("🔐 Access Denied. Please log in as an administrator to view this page.")
+        st.warning("Access Denied. Please log in as an administrator to view this page.")
         
         col_l, col_c, col_r = st.columns([1, 2, 1])
         with col_c:
@@ -57,7 +57,7 @@ def render_dashboard_page():
         excel_data = export_resumes_to_excel()
         if excel_data:
             st.download_button(
-                label="📥 Export Database (Excel)",
+                label="Export Database (Excel)",
                 data=excel_data,
                 file_name=f"resume_platform_data_{pd.Timestamp.now().strftime('%Y%m%d')}.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -108,7 +108,7 @@ def render_dashboard_page():
     st.markdown("<div style='margin-top: 25px;'></div>", unsafe_allow_html=True)
 
     # 3. Dynamic AI Platform Insights
-    st.markdown("<h3 style='color: var(--text-primary); margin-bottom: 15px;'>🧠 Dynamic AI Platform Insights</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: var(--text-primary); margin-bottom: 15px;'>Dynamic AI Platform Insights</h3>", unsafe_allow_html=True)
     insights = db_service.get_ai_insights()
     if insights:
         cols_ins = st.columns(len(insights))
@@ -116,7 +116,7 @@ def render_dashboard_page():
             with col_i:
                 st.markdown(f"""
                     <div style="background: var(--surface-soft); padding: 1.25rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); min-height: 120px;">
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">{ins.get('icon', '💡')}</div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent);"><i class="{ins.get('icon', '')}"></i></div>
                         <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">{ins.get('text', '')}</p>
                     </div>
                 """, unsafe_allow_html=True)
@@ -124,8 +124,8 @@ def render_dashboard_page():
     st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
 
     # 4. Detailed Data and Activity Log tables
-    st.markdown("<h3 style='color: var(--text-primary); margin-bottom: 15px;'>📋 Platform User Submissions & Audit Logs</h3>", unsafe_allow_html=True)
-    tab_data, tab_logs = st.tabs(["📄 User Resume Records", "🔒 Security Auth Logs"])
+    st.markdown("<h3 style='color: var(--text-primary); margin-bottom: 15px;'>Platform User Submissions & Audit Logs</h3>", unsafe_allow_html=True)
+    tab_data, tab_logs = st.tabs(["User Resume Records", "Security Auth Logs"])
     
     with tab_data:
         resumes = get_all_resume_data()

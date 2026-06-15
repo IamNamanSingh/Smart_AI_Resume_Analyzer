@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Only the latest release of Smart Resume AI is actively supported with security updates.
+Only the latest release of Smart Resume is actively supported with security updates.
 
 | Version | Supported |
 | :--- | :---: |
@@ -12,7 +12,7 @@ Only the latest release of Smart Resume AI is actively supported with security u
 
 ## Reporting a Vulnerability
 
-We take the security of Smart Resume AI seriously. If you find a security vulnerability, please report it immediately:
+We take the security of Smart Resume seriously. If you find a security vulnerability, please report it immediately:
 
 1. **Do not open a public GitHub issue** for security bugs.
 2. Email your report directly to the maintainer:

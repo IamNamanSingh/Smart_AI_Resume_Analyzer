@@ -37,23 +37,9 @@ def render_analyzer_page():
     st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
 
     uploaded_file = st.file_uploader(
-        "Upload your resume",
+        "Upload your resume (PDF or DOCX)",
         type=['pdf', 'docx'],
-        key='analyzer_upload',
-        label_visibility='collapsed'
-    )
-
-    st.markdown(
-        """
-        <div class='upload-card'>
-            <div class='upload-icon'>
-                <i class='fas fa-cloud-upload-alt'></i>
-            </div>
-            <h4>Drag & drop your resume</h4>
-            <p>PDF or DOCX. The analyzer will inspect formatting, skills, and ATS compatibility.</p>
-        </div>
-        """,
-        unsafe_allow_html=True
+        key='analyzer_upload'
     )
 
     if uploaded_file is not None and st.button("Analyze Resume", key='analyze_resume_button', use_container_width=True):
@@ -81,10 +67,10 @@ def render_analyzer_page():
             missing_count = len(missing_skills)
 
             card_items = [
-                ("ATS Score", f"{avg_score}/100", "How well the resume passes ATS checks", "⚡"),
-                ("JD Match", f"{match_score}%", "Role-specific keyword alignment", "📌"),
-                ("Missing Skills", f"{missing_count}", "Skills not present in this resume", "🧩"),
-                ("Resume Quality", f"{resume_quality}/100", "Readability and structure score", "✨")
+                ("ATS Score", f"{avg_score}/100", "How well the resume passes ATS checks", "fas fa-bolt"),
+                ("JD Match", f"{match_score}%", "Role-specific keyword alignment", "fas fa-bullseye"),
+                ("Missing Skills", f"{missing_count}", "Skills not present in this resume", "fas fa-puzzle-piece"),
+                ("Resume Quality", f"{resume_quality}/100", "Readability and structure score", "fas fa-magic")
             ]
 
             st.markdown("<div class='dashboard-grid'>", unsafe_allow_html=True)

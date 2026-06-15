@@ -38,7 +38,7 @@ def render_builder_page():
         
         if 'step0_errors' in st.session_state and st.session_state.step0_errors:
             for err in st.session_state.step0_errors:
-                st.error(f"⚠️ {err}")
+                st.error(f"{err}")
 
         st.session_state.builder_form['personal_info']['full_name'] = st.text_input(
             "Full Name",
@@ -81,11 +81,11 @@ def render_builder_page():
         name_valid = len(name_val.strip()) > 0
         
         if not name_valid:
-            st.warning("⚠️ Full Name is required.")
+            st.warning("Full Name is required.")
         if email_val and not email_valid:
-            st.warning("⚠️ Please enter a valid email address (e.g. user@domain.com).")
+            st.warning("Please enter a valid email address (e.g. user@domain.com).")
         if phone_val and not phone_valid:
-            st.warning("⚠️ Phone number must be exactly 10 digits.")
+            st.warning("Phone number must be exactly 10 digits.")
 
         st.session_state.builder_form['summary'] = st.text_area(
             "Professional Summary",
@@ -95,7 +95,7 @@ def render_builder_page():
         )
 
     elif current_step == 1:
-        st.subheader("Work Experience 💼")
+        st.subheader("Work Experience")
         experiences = st.session_state.builder_form.get('experiences', [])
         if not isinstance(experiences, list):
             experiences = []
@@ -137,7 +137,7 @@ def render_builder_page():
         st.session_state.builder_form['experiences'] = updated_experiences
         
         col_add, col_rem = st.columns(2)
-        if col_add.button("➕ Add Experience", use_container_width=True):
+        if col_add.button("Add Experience", use_container_width=True):
             st.session_state.builder_form['experiences'].append({
                 'company': '',
                 'position': '',
@@ -149,12 +149,12 @@ def render_builder_page():
             st.rerun()
         
         if len(st.session_state.builder_form['experiences']) > 1:
-            if col_rem.button("🗑️ Remove Last Experience", use_container_width=True):
+            if col_rem.button("Remove Last Experience", use_container_width=True):
                 st.session_state.builder_form['experiences'].pop()
                 st.rerun()
 
     elif current_step == 2:
-        st.subheader("Projects & Achievements 🛠️")
+        st.subheader("Projects & Achievements")
         projects = st.session_state.builder_form.get('projects', [])
         if not isinstance(projects, list):
             projects = []
@@ -189,7 +189,7 @@ def render_builder_page():
         st.session_state.builder_form['projects'] = updated_projects
         
         col_add_proj, col_rem_proj = st.columns(2)
-        if col_add_proj.button("➕ Add Project", use_container_width=True):
+        if col_add_proj.button("Add Project", use_container_width=True):
             st.session_state.builder_form['projects'].append({
                 'name': '',
                 'technologies': '',
@@ -198,12 +198,12 @@ def render_builder_page():
             })
             st.rerun()
         if len(st.session_state.builder_form['projects']) > 1:
-            if col_rem_proj.button("🗑️ Remove Last Project", use_container_width=True):
+            if col_rem_proj.button("Remove Last Project", use_container_width=True):
                 st.session_state.builder_form['projects'].pop()
                 st.rerun()
         
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.subheader("Education 🎓")
+        st.subheader("Education")
         education = st.session_state.builder_form.get('education', [])
         if not isinstance(education, list):
             education = []
@@ -240,7 +240,7 @@ def render_builder_page():
         st.session_state.builder_form['education'] = updated_education
         
         col_add_edu, col_rem_edu = st.columns(2)
-        if col_add_edu.button("➕ Add Education", use_container_width=True):
+        if col_add_edu.button("Add Education", use_container_width=True):
             st.session_state.builder_form['education'].append({
                 'school': '',
                 'degree': '',
@@ -250,12 +250,12 @@ def render_builder_page():
             })
             st.rerun()
         if len(st.session_state.builder_form['education']) > 1:
-            if col_rem_edu.button("🗑️ Remove Last Education", use_container_width=True):
+            if col_rem_edu.button("Remove Last Education", use_container_width=True):
                 st.session_state.builder_form['education'].pop()
                 st.rerun()
 
     elif current_step == 3:
-        st.subheader("Skills 🤹")
+        st.subheader("Skills")
         
         if 'skills_categories' not in st.session_state.builder_form:
             st.session_state.builder_form['skills_categories'] = {
@@ -297,7 +297,7 @@ def render_builder_page():
         st.session_state.builder_form['skills_categories']['tools'] = [s.strip() for s in tools_input.split(",") if s.strip()]
 
     else:
-        st.subheader("Review & Generate 📄")
+        st.subheader("Review & Generate")
         st.write("Please review your resume details before generation:")
         
         personal = st.session_state.builder_form.get('personal_info', {})
@@ -321,7 +321,7 @@ def render_builder_page():
             template_options,
             key="builder_template_select"
         )
-        st.success(f"🎨 Selected Template: {selected_template}")
+        st.success(f"Selected Template: {selected_template}")
         
         errors = []
         if not personal.get('full_name', '').strip():
@@ -333,10 +333,10 @@ def render_builder_page():
             
         if errors:
             for err in errors:
-                st.error(f"⚠️ {err}")
+                st.error(f"{err}")
             st.warning("Please go back to Step 1 and fill in the required fields before generating.")
         else:
-            if st.button("Generate Resume 📄", use_container_width=True):
+            if st.button("Generate Resume", use_container_width=True):
                 resume_data = {
                     'personal_info': personal,
                     'summary': st.session_state.builder_form.get('summary', ''),
@@ -353,7 +353,7 @@ def render_builder_page():
                         
                     if resume_buffer:
                         save_resume_data(resume_data)
-                        st.success("🎉 Resume generated successfully!")
+                        st.success("Resume generated successfully!")
                         st.download_button(
                             "Download Resume (.docx)",
                             data=resume_buffer,

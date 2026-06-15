@@ -52,7 +52,7 @@ def render_jobs_page():
                 )
                 
             # Advanced filters expander
-            with st.expander("🎯 Filter Options"):
+            with st.expander("Filter Options"):
                 f_cols = st.columns(3)
                 filter_opts = job_service.get_filter_options()
                 
@@ -77,7 +77,7 @@ def render_jobs_page():
             
             st.markdown("<br>", unsafe_allow_html=True)
 
-            if st.button("Search Jobs 🚀", use_container_width=True, type="primary"):
+            if st.button("Search Jobs", use_container_width=True, type="primary"):
                 if not job_query.strip():
                     st.warning("Please enter a job title or core skills to search.")
                 else:
@@ -89,7 +89,7 @@ def render_jobs_page():
                         )
                     
                     if search_results:
-                        st.markdown("<h3 style='margin: 1.5rem 0 1rem 0;'>🔗 Direct Search Links</h3>", unsafe_allow_html=True)
+                        st.markdown("<h3 style='margin: 1.5rem 0 1rem 0;'>Direct Search Links</h3>", unsafe_allow_html=True)
                         st.markdown("<div class='grid'>", unsafe_allow_html=True)
                         
                         cols = st.columns(3)

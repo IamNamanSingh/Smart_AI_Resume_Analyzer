@@ -562,7 +562,7 @@ class LinkedInScraper:
         """, unsafe_allow_html=True)
         
         # Display job count
-        st.markdown(f'<div class="job-count">🎯 Found {len(df_final)} matching jobs on LinkedIn</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="job-count"><i class="fas fa-bullseye" style="margin-right: 0.5rem;"></i>Found {len(df_final)} matching jobs on LinkedIn</div>', unsafe_allow_html=True)
         
         # Display each job
         for i in range(len(df_final)):
@@ -577,7 +577,7 @@ class LinkedInScraper:
                 <div class="job-card">
                     <div class="job-title">{job_title}</div>
                     <div class="company-name">{company_name}</div>
-                    <div class="job-location">📍 {location}</div>
+                    <div class="job-location"><i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>{location}</div>
                 </div>
             """, unsafe_allow_html=True)
             

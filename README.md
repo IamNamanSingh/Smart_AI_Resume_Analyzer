@@ -1,14 +1,14 @@
-# Smart Resume AI
+# Smart Resume
 
 Professional AI-powered Resume Analysis and Resume Building Platform.
 
-Smart Resume AI is a modern SaaS platform designed to optimize resumes for Applicant Tracking Systems (ATS) and align candidates with their target job roles. Built with a dark glassmorphic design and modular Python services, the platform provides deep parsing analytics, automated resume builders, and job portals integration.
+Smart Resume is a modern SaaS platform designed to optimize resumes for Applicant Tracking Systems (ATS) and align candidates with their target job roles. Built with a dark glassmorphic design and modular Python services, the platform provides deep parsing analytics, automated resume builders, and job portals integration.
 
 ---
 
-## 🚀 Overview
+## Overview
 
-Smart Resume AI bridges the gap between candidate resumes and job postings:
+Smart Resume bridges the gap between candidate resumes and job postings:
 * **Resume Analyzer**: Scans uploaded PDF/Word resumes, checks structure, formatting constraints, and matches keywords.
 * **Resume Builder**: Step-by-step wizard to dynamically compile resumes and export formatted Word (`.docx`) files.
 * **ATS Score Analysis**: Rates candidate resumes against target job description requirements.
@@ -19,20 +19,20 @@ Smart Resume AI bridges the gap between candidate resumes and job postings:
 
 ---
 
-## ✨ Features
+## Features
 
-* 🔍 **ATS Resume Analysis**: Granular formatting, structure, and keyword compatibility scorecard.
-* 🤖 **AI Resume Evaluation**: Deep suggestions utilizing LLM (Google Gemini) integration.
-* 📝 **Resume Builder**: Professional templates (Modern, Professional, Minimal, Creative) with multi-step workflows.
-* 📊 **Dashboard Analytics**: High-performance Plotly charts mapping score spreads and upload traffic.
-* 🧩 **Skill Gap Detection**: Pinpoints exact missing qualifications between target roles and profiles.
-* 🔗 **Job Recommendations**: Direct queries compilation and search list matching.
-* 💬 **Feedback Management**: Easy-to-use form to collect and save user suggestions.
-* 🔐 **Admin Dashboard**: Audits login session logs, exports data spreadsheets, and monitors traffic.
+* **ATS Resume Analysis**: Granular formatting, structure, and keyword compatibility scorecard.
+* **AI Resume Evaluation**: Deep suggestions utilizing LLM (Google Gemini) integration.
+* **Resume Builder**: Professional templates (Modern, Professional, Minimal, Creative) with multi-step workflows.
+* **Dashboard Analytics**: High-performance Plotly charts mapping score spreads and upload traffic.
+* **Skill Gap Detection**: Pinpoints exact missing qualifications between target roles and profiles.
+* **Job Recommendations**: Direct queries compilation and search list matching.
+* **Feedback Management**: Easy-to-use form to collect and save user suggestions.
+* **Admin Dashboard**: Audits login session logs, exports data spreadsheets, and monitors traffic.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Frontend & Shell**: Streamlit, HTML5, custom Vanilla HSL CSS variables
 * **Backend Processing**: Python 3.12, Pandas, SQLite3
@@ -42,7 +42,7 @@ Smart Resume AI bridges the gap between candidate resumes and job postings:
 
 ---
 
-## 📐 Project Architecture
+## Project Architecture
 
 ```
 Smart-AI-Resume-Analyzer/
@@ -90,32 +90,42 @@ Smart-AI-Resume-Analyzer/
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-To help you navigate the system, visual screenshots are configured in the repository:
+Here is a visual overview of the platform interfaces:
 
-* **Home Landing**: `assets/screenshots/home.png`
-* **Scorecard Analyzer**: `assets/screenshots/analyzer.png`
-* **Wizard Builder**: `assets/screenshots/builder.png`
-* **Metrics Dashboard**: `assets/screenshots/dashboard.png`
-* **Feedback Page**: `assets/screenshots/feedback.png`
-* **About Page**: `assets/screenshots/about.png`
-* **Admin Auth Panel**: `assets/screenshots/admin.png`
+### Home Page
+![Home Page](assets/screenshots/home.png)
 
-*(Refer to the [SCREENSHOT_GUIDE.md](SCREENSHOT_GUIDE.md) file for instructions on updating these files.)*
+### Resume Analyzer
+![Resume Analyzer](assets/screenshots/analyzer.png)
+
+### Resume Builder
+![Resume Builder](assets/screenshots/builder.png)
+
+### Admin Analytics Dashboard
+![Admin Dashboard](assets/screenshots/dashboard.png)
+
+### Feedback Page
+![Feedback Page](assets/screenshots/feedback.png)
+
+### About Page
+![About Page](assets/screenshots/about.png)
+
+### Admin Panel Auth
+![Admin Panel Login](assets/screenshots/admin.png)
 
 ---
 
-## 🎥 Demo Video
+## Demo Video
 
-Watch the complete project demo:
-* **Product Walkthrough Video**: `assets/videos/demo.mp4`
+Watch the complete project walkthrough:
 
-*(Refer to the [VIDEO_GUIDE.md](VIDEO_GUIDE.md) file for instructions on recording walkthrough segments.)*
+[Smart Resume Demo Walkthrough](assets/videos/demo.mp4)
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### 1. Clone the repository
 ```bash
@@ -139,12 +149,12 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 ### 1. Configure Secrets
-Create a `.env` file in the project root:
+
+Create a `.env` file in the root directory and define the admin credentials:
 ```env
-GOOGLE_API_KEY=your_gemini_api_key_here
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=your_secure_password_here
 ```
@@ -157,7 +167,7 @@ Open your browser to [http://localhost:8501](http://localhost:8501).
 
 ---
 
-## 🌐 Deployment
+## Deployment
 
 ### Streamlit Cloud
 1. Push your repository to GitHub.
@@ -168,13 +178,13 @@ Open your browser to [http://localhost:8501](http://localhost:8501).
 ### Docker Support
 Build and run via Docker:
 ```bash
-docker build -t smart-resume-ai .
-docker run -d -p 8501:8501 -e GOOGLE_API_KEY="key" smart-resume-ai
+docker build -t smart-resume .
+docker run -p 8501:8501 smart-resume
 ```
 
 ---
 
-## 🗺️ Future Roadmap
+## Future Roadmap
 
 * **Asynchronous Scrapers**: Shift scraping jobs to celery task pipelines.
 * **Interactive AI Chat**: Let candidates talk directly with the AI about resume improvements.
@@ -182,7 +192,7 @@ docker run -d -p 8501:8501 -e GOOGLE_API_KEY="key" smart-resume-ai
 
 ---
 
-## 👤 Author
+## Author
 
 * **Naman Singh**
 * **GitHub**: [IamNamanSingh](https://github.com/IamNamanSingh)

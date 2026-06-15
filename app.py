@@ -3,8 +3,8 @@ import pandas as pd
 
 # Set page config at the very beginning
 st.set_page_config(
-    page_title="Smart Resume AI",
-    page_icon="🤖",
+    page_title="Smart Resume",
+    page_icon=None,
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -31,9 +31,18 @@ st.markdown("""
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 """, unsafe_allow_html=True)
 
-# Render Desktop Navbar & Admin authentication popup controls
+# Render Desktop Navbar & Admin authentication controls
 from components.navbar import render_navbar
-page_keys = ["Home", "Resume Analyzer", "Resume Builder", "Dashboard", "Job Search", "Feedback", "About"]
+# Define navigation page list based on admin status
+page_keys = ["Home", "Resume Analyzer", "Resume Builder", "Job Search", "Feedback", "About"]
+if st.session_state.get('is_admin', False):
+    page_keys.insert(3, "Dashboard")
+    page_keys.append("Admin")
+else:
+    # If not admin, ensure they aren't on the dashboard or admin page
+    if st.session_state.get('page') in ['dashboard', 'admin']:
+        st.session_state.page = 'home'
+
 selected_page = render_navbar(page_keys, st.session_state.page)
 
 # If navigation changed, update and rerun
@@ -44,27 +53,36 @@ if selected_page != st.session_state.page:
 # Page Routing
 current_page = st.session_state.page
 
+# Security Guard: restrict unauthorized access to admin/dashboard routes
+if current_page in ['dashboard', 'admin'] and not st.session_state.get('is_admin', False):
+    st.error("Access Denied. Redirecting to Home...")
+    st.session_state.page = 'home'
+    st.rerun()
+
 if current_page == 'home':
-    from pages.home import render_home_page
+    from views.home import render_home_page
     render_home_page()
 elif current_page == 'resume_analyzer':
-    from pages.analyzer import render_analyzer_page
+    from views.analyzer import render_analyzer_page
     render_analyzer_page()
 elif current_page == 'resume_builder':
-    from pages.builder import render_builder_page
+    from views.builder import render_builder_page
     render_builder_page()
 elif current_page == 'dashboard':
-    from pages.dashboard import render_dashboard_page
+    from views.dashboard import render_dashboard_page
     render_dashboard_page()
 elif current_page == 'job_search':
-    from pages.jobs import render_jobs_page
+    from views.jobs import render_jobs_page
     render_jobs_page()
 elif current_page == 'feedback':
-    from pages.feedback import render_feedback_page
+    from views.feedback import render_feedback_page
     render_feedback_page()
 elif current_page == 'about':
-    from pages.about import render_about_page
+    from views.about import render_about_page
     render_about_page()
+elif current_page == 'admin':
+    from views.admin import render_admin_page
+    render_admin_page()
 
 # Global Footer
 from components.footer import render_footer
