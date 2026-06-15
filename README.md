@@ -117,14 +117,6 @@ Here is a visual overview of the platform interfaces:
 
 ---
 
-## Demo Video
-
-Watch the complete project walkthrough:
-
-[Smart Resume Demo Walkthrough](assets/videos/demo.mp4)
-
----
-
 ## Installation
 
 ### 1. Clone the repository
